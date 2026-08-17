@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denis Lazarini - Engenheiro Agrônomo</title>
+
+    <title>Denis Lazarini | Engenheiro Agrônomo</title>
+
     <style>
         * {
             margin: 0;
@@ -11,69 +13,147 @@
             box-sizing: border-box;
         }
 
+        html,
         body {
-            background-color: #0b1a0d;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 10px;
+            width: 100%;
+            min-height: 100%;
+            background: #07140d;
         }
 
-        .card-wrapper {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .cartao {
             position: relative;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            border-radius: 20px;
+
+            /*
+             * Mantém exatamente a proporção
+             * original da arte: 864 x 1821
+             */
+            width: min(100vw, 864px);
+            aspect-ratio: 864 / 1821;
+
+            background-image: url("cartao-denis.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+
             overflow: hidden;
         }
 
-        .card-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Estilo base das áreas clicáveis */
-        .btn-overlay {
+        /*
+         * Links transparentes sobre os botões
+         */
+        .botao {
             position: absolute;
-            left: 19.5%;
-            width: 61%;
-            height: 6.8%;
-            border-radius: 30px;
-            text-decoration: none;
             display: block;
+
+            background: transparent;
+            border: none;
+
+            cursor: pointer;
+
+            /*
+             * Evita qualquer alteração visual
+             */
+            text-decoration: none;
+
+            /*
+             * Garante que o clique seja recebido
+             */
+            z-index: 10;
         }
 
-        /* Posições ajustadas (-3mm em relação ao anterior) */
-        .btn-whatsapp {
-            bottom: 31.5%; /* Desceu de 33.3% para 31.5% */
+        /*
+         * WHATSAPP
+         *
+         * Coordenadas aproximadas da arte:
+         * x = 170px
+         * y = 1120px
+         * largura = 525px
+         * altura = 126px
+         */
+        .whatsapp {
+            left: 19.7%;
+            top: 61.5%;
+            width: 60.8%;
+            height: 7.0%;
         }
 
-        .btn-telefone {
-            bottom: 22.8%; /* Desceu de 24.6% para 22.8% */
+        /*
+         * TELEFONE
+         */
+        .telefone {
+            left: 19.7%;
+            top: 68.7%;
+            width: 60.8%;
+            height: 7.0%;
         }
 
-        .btn-email {
-            bottom: 14.1%; /* Desceu de 15.9% para 14.1% */
+        /*
+         * E-MAIL
+         */
+        .email {
+            left: 19.7%;
+            top: 75.9%;
+            width: 60.8%;
+            height: 7.0%;
         }
 
-        /* Feedback visual ao clicar */
-        .btn-overlay:active {
-            background: rgba(46, 125, 50, 0.25);
+        /*
+         * Efeito visual apenas durante o toque/clique.
+         * Pode remover se quiser os botões 100% invisíveis.
+         */
+        .botao:active {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        /*
+         * Evita seleção da imagem no celular
+         */
+        .cartao {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /*
+         * Evita menu de imagem ao tocar e segurar
+         */
+        .cartao {
+            -webkit-touch-callout: none;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="card-wrapper">
-        <img src="foto.png" alt="Denis Lazarini - Engenheiro Agrônomo" class="card-img">
+    <main class="cartao">
 
-        <a href="https://wa.me/5512996500517" target="_blank" class="btn-overlay btn-whatsapp" title="WhatsApp"></a>
-        <a href="tel:+5521982208449" class="btn-overlay btn-telefone" title="Telefone"></a>
-        <a href="mailto:contato@denislazarini.com" class="btn-overlay btn-email" title="E-mail"></a>
-    </div>
+        <!-- BOTÃO WHATSAPP -->
+        <a
+            class="botao whatsapp"
+            href="https://wa.me/5512996505017"
+            aria-label="Entrar em contato pelo WhatsApp"
+        ></a>
+
+        <!-- BOTÃO TELEFONE -->
+        <a
+            class="botao telefone"
+            href="tel:+5521982208449"
+            aria-label="Ligar para Denis Lazarini"
+        ></a>
+
+        <!-- BOTÃO E-MAIL -->
+        <a
+            class="botao email"
+            href="mailto:contato@denislazarini.com"
+            aria-label="Enviar e-mail"
+        ></a>
+
+    </main>
 
 </body>
 </html>
