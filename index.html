@@ -5,39 +5,53 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
     <title>Denis Lazarini | Engenheiro Agrônomo</title>
 
     <style>
+        /* =====================================================
+           CONFIGURAÇÕES GERAIS
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html,
-        body {
+        html {
             width: 100%;
             min-height: 100%;
             background: #07140d;
         }
 
         body {
+            width: 100%;
+            min-height: 100dvh;
+            margin: 0;
+            padding: 0;
+
+            background: #07140d;
+
             display: flex;
             justify-content: center;
             align-items: flex-start;
+
+            overflow-x: hidden;
         }
 
-        /*
-        =========================================================
-        CARTÃO
-        =========================================================
-        A arte original possui 863 x 1823 px.
-        Mantemos a mesma proporção para que os botões
-        permaneçam exatamente sobre a arte.
-        */
+
+        /* =====================================================
+           CARTÃO
+           
+           A arte possui proporção 863 × 1823.
+           
+           O cartão sempre acompanha a largura da tela.
+           Não usamos altura fixa, evitando problemas com
+           a barra de endereço do Chrome.
+        ===================================================== */
 
         .cartao {
             position: relative;
@@ -46,30 +60,36 @@
 
             aspect-ratio: 863 / 1823;
 
+            flex-shrink: 0;
+
             background-image: url("foto.png");
+
             background-size: 100% 100%;
+
             background-repeat: no-repeat;
-            background-position: center;
+
+            background-position: center top;
 
             overflow: hidden;
 
             user-select: none;
             -webkit-user-select: none;
+
             -webkit-touch-callout: none;
         }
 
 
-        /*
-        =========================================================
-        ÁREA CLICÁVEL
-        =========================================================
-
-        Os links são completamente transparentes.
-
-        Não existe texto, cor ou borda neles.
-        O usuário enxerga somente a arte.
-        */
-
+        /* =====================================================
+           BOTÕES INVISÍVEIS
+           
+           Eles não possuem:
+           - cor
+           - borda
+           - texto
+           - sombra
+           
+           São apenas áreas clicáveis sobre a arte.
+        ===================================================== */
 
         .botao {
             position: absolute;
@@ -78,7 +98,7 @@
 
             background: transparent;
 
-            border: 0;
+            border: none;
 
             outline: none;
 
@@ -86,21 +106,15 @@
 
             cursor: pointer;
 
-            z-index: 20;
+            z-index: 50;
 
             -webkit-tap-highlight-color: transparent;
         }
 
 
-        /*
-        =========================================================
-        WHATSAPP
-        =========================================================
-
-        Área aproximada:
-        X: 174 → 687
-        Y: 1027 → 1149
-        */
+        /* =====================================================
+           WHATSAPP
+        ===================================================== */
 
         .whatsapp {
             left: 20.2%;
@@ -111,15 +125,9 @@
         }
 
 
-        /*
-        =========================================================
-        TELEFONE
-        =========================================================
-
-        Área:
-        X: 174 → 687
-        Y: 1172 → 1294
-        */
+        /* =====================================================
+           TELEFONE
+        ===================================================== */
 
         .telefone {
             left: 20.2%;
@@ -130,15 +138,9 @@
         }
 
 
-        /*
-        =========================================================
-        E-MAIL
-        =========================================================
-
-        Área:
-        X: 174 → 687
-        Y: 1316 → 1438
-        */
+        /* =====================================================
+           E-MAIL
+        ===================================================== */
 
         .email {
             left: 20.2%;
@@ -149,15 +151,9 @@
         }
 
 
-        /*
-        =========================================================
-        INSTAGRAM
-        =========================================================
-
-        Área:
-        X: 174 → 687
-        Y: 1460 → 1582
-        */
+        /* =====================================================
+           INSTAGRAM
+        ===================================================== */
 
         .instagram {
             left: 20.2%;
@@ -168,29 +164,28 @@
         }
 
 
-        /*
-        Remove qualquer efeito visual ao clicar.
-        O botão continua completamente invisível.
-        */
+        /* =====================================================
+           REMOVE EFEITOS VISUAIS DOS LINKS
+        ===================================================== */
 
-        .botao:active,
+        .botao:hover,
         .botao:focus,
-        .botao:hover {
+        .botao:active {
             background: transparent;
+            border: none;
             outline: none;
         }
 
 
-        /*
-        =========================================================
-        DESKTOP
-        =========================================================
-        */
+        /* =====================================================
+           COMPUTADOR
+        ===================================================== */
 
         @media (min-width: 864px) {
 
             body {
-                padding: 20px 0;
+                padding-top: 20px;
+                padding-bottom: 20px;
             }
 
             .cartao {
@@ -206,34 +201,49 @@
 
     <main class="cartao">
 
-        <!-- WHATSAPP -->
+        <!-- =================================================
+             WHATSAPP
+             
+             Número correto:
+             12 996500517
+        ================================================== -->
+
         <a
-            class="botao whatsapp"
             href="https://wa.me/5512996500517"
+            class="botao whatsapp"
             aria-label="WhatsApp"
         ></a>
 
 
-        <!-- TELEFONE -->
+        <!-- =================================================
+             TELEFONE
+        ================================================== -->
+
         <a
-            class="botao telefone"
             href="tel:+5521982208449"
+            class="botao telefone"
             aria-label="Telefone"
         ></a>
 
 
-        <!-- E-MAIL -->
+        <!-- =================================================
+             E-MAIL
+        ================================================== -->
+
         <a
-            class="botao email"
             href="mailto:contato@denislazarini.com"
+            class="botao email"
             aria-label="E-mail"
         ></a>
 
 
-        <!-- INSTAGRAM -->
+        <!-- =================================================
+             INSTAGRAM
+        ================================================== -->
+
         <a
-            class="botao instagram"
             href="https://www.instagram.com/denislazarini"
+            class="botao instagram"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
